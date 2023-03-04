@@ -9,7 +9,7 @@
     <ToolCommandName>dotnet-purge</ToolCommandName>
     <PackageOutputPath>./nupkg</PackageOutputPath>
       
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <Authors>Ilia Kosenkov</Authors>
     <Description>Fully removes '*bin' and '*obj' directories of .NET projects.</Description>
     <AssemblyName>dotnet-purge</AssemblyName>
