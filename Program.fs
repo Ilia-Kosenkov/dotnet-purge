@@ -23,7 +23,7 @@ with
 |>
 findDirs (seq { "bin"; "obj" }) |>
 Seq.iter (fun p ->
-     p |> printfn "Nuking '%s'"
+     p |> printfn "Purging '%s'"
      Directory.Delete(p, true)
 )
         
