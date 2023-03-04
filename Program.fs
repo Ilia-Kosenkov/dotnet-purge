@@ -1,2 +1,30 @@
-﻿// For more information see https://aka.ms/fsharp-console-apps
-printfn "Hello from F#"
+﻿open System
+open System.IO;
+
+let rec findDirs (endsWith : string seq) directory =
+    let rest, matches =
+        directory |>
+        Directory.GetDirectories |>
+        Array.map Path.GetFullPath |>
+        Array.partition (fun x -> endsWith |> Seq.where x.EndsWith |> Seq.isEmpty)
+            
+    rest |>
+        seq |>
+        Seq.map (findDirs endsWith) |>
+        Seq.concat |>
+        Seq.append (matches |> seq)
+
+match
+    Environment.GetCommandLineArgs() |>
+    Array.skip 1
+with
+| [| path |] -> path
+| _ -> Environment.CurrentDirectory
+|>
+findDirs (seq { "bin"; "obj" }) |>
+Seq.iter (fun p ->
+     p |> printfn "Nuking '%s'"
+     Directory.Delete(p, true)
+)
+        
+        

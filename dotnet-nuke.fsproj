@@ -2,8 +2,11 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net7.0</TargetFramework>
-    <RootNamespace>dotnet_nuke</RootNamespace>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>DotnetNuke</RootNamespace>
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>dotnet-nuke</ToolCommandName>
+    <PackageOutputPath>./nupkg</PackageOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
