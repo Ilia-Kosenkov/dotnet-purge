@@ -7,7 +7,7 @@ let rec findDirs (endsWith : string seq) directory =
         Directory.GetDirectories |>
         Array.map Path.GetFullPath |>
         Array.partition (fun x -> endsWith |> Seq.where x.EndsWith |> Seq.isEmpty)
-            
+
     rest |>
         seq |>
         Seq.map (findDirs endsWith) |>
@@ -21,10 +21,8 @@ with
 | [| path |] -> path
 | _ -> Environment.CurrentDirectory
 |>
-findDirs (seq { "bin"; "obj" }) |>
+findDirs (seq { "/bin"; "/obj" ; "\\bin" ; "\\obj" }) |>
 Seq.iter (fun p ->
      p |> printfn "Purging '%s'"
      Directory.Delete(p, true)
 )
-        
-        
